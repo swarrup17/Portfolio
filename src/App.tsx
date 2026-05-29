@@ -28,8 +28,7 @@ import {
   Download,
   Sun,
   Moon,
-  Crosshair,
-  Terminal
+  Crosshair
 } from 'lucide-react';
 
 const skills = {
@@ -42,7 +41,7 @@ const skills = {
     { name: 'PHP', level: 65 },
   ],
   aiml: ['TensorFlow', 'Keras', 'PyTorch', 'OpenCV', 'NumPy', 'Pandas', 'Matplotlib'],
-  tools: ['GitHub', 'VS Code', 'PyCharm', 'Visual Studio', 'Selenium', 'Robot Framework', 'Flask', '.NET'],
+  tools: ['GitHub', 'VS Code', 'PyCharm', 'Visual Studio', 'Selenium', 'Robot Framework', 'Flask', '.NET', 'Opencode Codex', 'Antigravity CLI (agy)'],
   other: ['HTML5', 'CSS3', 'Figma', 'Canva', 'JDK', 'JDBC'],
 };
 
@@ -126,20 +125,6 @@ const projects = [
     tags: ['JavaScript', 'PHP', 'CSS', 'HTML'],
     url: 'https://github.com/swarrup17/Shape-Shooter',
     icon: Crosshair,
-  },
-  {
-    title: 'Opencode Codex',
-    description: 'AI-powered coding assistant codex — a curated knowledge base and tooling reference for the Opencode ecosystem. Includes agent patterns, skill definitions, and configuration guides.',
-    tags: ['AI', 'Documentation', 'Tooling'],
-    url: 'https://github.com/swarrup17/Portfolio',
-    icon: Code2,
-  },
-  {
-    title: 'Antigravity CLI (agy)',
-    description: 'A command-line tool that simplifies project scaffolding, dependency management, and development workflows. Built for speed and developer ergonomics.',
-    tags: ['Go', 'CLI', 'DevTools'],
-    url: 'https://github.com/swarrup17/Portfolio',
-    icon: Terminal,
   },
 ];
 
