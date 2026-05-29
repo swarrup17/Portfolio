@@ -2,6 +2,8 @@
 
 Personal portfolio website built with React, TypeScript, and Tailwind CSS.
 
+🔗 **Live:** [https://swarrup17.github.io/Portfolio](https://swarrup17.github.io/Portfolio)
+
 ## Tech Stack
 
 - **React 18** — UI framework
