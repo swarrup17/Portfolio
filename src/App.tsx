@@ -14,7 +14,6 @@ import {
   ExternalLink,
   Code2,
   Brain,
-  Database,
   TestTube,
   Sparkles,
   Menu,
@@ -67,7 +66,6 @@ const experience = [
     title: 'QA Engineer',
     company: 'Infiloop',
     period: 'Present',
-    duration: 'Currently employed',
     url: 'https://infiloop.co/',
     description: 'Quality assurance engineer responsible for automated and manual testing.',
     achievements: [
@@ -82,7 +80,6 @@ const experience = [
     title: 'QA Intern',
     company: 'Zakipoint Health',
     period: 'November 2025 - February 2026',
-    duration: '4 months',
     url: 'https://www.zakipointhealth.com/',
     description: 'Quality Assurance intern gaining hands-on experience in web automation and healthcare application testing.',
     achievements: [
@@ -191,7 +188,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen dark:bg-gradient-to-br dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 bg-gradient-to-br from-white via-gray-50 to-white dark:text-white text-slate-900">
+    <main className="min-h-screen dark:bg-gradient-to-br dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 bg-gradient-to-br from-white via-gray-50 to-white dark:text-white text-slate-900">
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'dark:bg-slate-900/95 bg-white/95 backdrop-blur-md shadow-lg shadow-blue-500/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -208,6 +205,7 @@ function App() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
+                  aria-current={activeSection === item.toLowerCase() ? 'true' : undefined}
                   className={`capitalize transition-all duration-300 relative px-3 py-2 ${activeSection === item.toLowerCase()
                       ? 'text-blue-500'
                       : 'dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-blue-500'
@@ -234,6 +232,7 @@ function App() {
             <button
               className="md:hidden p-2 rounded-lg dark:hover:bg-slate-800 hover:bg-slate-200 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -319,6 +318,7 @@ function App() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.name}
                     className={`p-3 dark:bg-slate-800/50 bg-white rounded-xl border dark:border-slate-700 border-slate-200 dark:text-gray-400 text-slate-500 hover:text-white ${social.color} hover:border-transparent transition-all duration-300`}
                   >
                     <social.icon size={22} />
@@ -786,6 +786,7 @@ function App() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.name}
                     className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                   >
                     <div className="w-12 h-12 rounded-xl dark:bg-slate-700 bg-slate-100 border dark:border-slate-600 border-slate-300 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/50 transition-all duration-300">
@@ -819,6 +820,7 @@ function App() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.name}
                   className="dark:text-gray-400 text-slate-500 hover:text-blue-500 transition-colors duration-300"
                 >
                   <social.icon size={20} />
@@ -831,7 +833,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }
 

@@ -27,25 +27,9 @@ export default {
         }
       },
       animation: {
-        'shimmer': 'shimmer 3s ease-in-out infinite',
-        'wiggle': 'wiggle 0.5s ease-in-out',
-        'fade-in': 'fadeIn 0.8s ease-out forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
-      keyframes: {
-        shimmer: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
-        },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '25%': { transform: 'rotate(-2deg)' },
-          '75%': { transform: 'rotate(2deg)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-      },
+      keyframes: {},
     },
   },
   plugins: [],
