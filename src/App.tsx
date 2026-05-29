@@ -12,7 +12,6 @@ import {
   Users,
   Mail,
   ExternalLink,
-  ChevronDown,
   Code2,
   Brain,
   Database,
@@ -27,7 +26,9 @@ import {
   Briefcase,
   Calendar,
   FileText,
-  Download
+  Download,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const skills = {
@@ -45,7 +46,7 @@ const skills = {
 };
 
 const stats = [
-  { label: 'Repositories', value: 33, icon: FolderGit2, color: 'from-cyan-400 to-blue-500' },
+  { label: 'Repositories', value: 33, icon: FolderGit2, color: 'from-violet-500 to-purple-500' },
   { label: 'Stars Earned', value: 167, icon: Star, color: 'from-yellow-400 to-orange-500' },
   { label: 'Followers', value: 29, icon: Users, color: 'from-green-400 to-emerald-500' },
   { label: 'Following', value: 33, icon: GitFork, color: 'from-pink-400 to-rose-500' },
@@ -140,6 +141,20 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return true;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -167,13 +182,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen dark:bg-gradient-to-br dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 bg-gradient-to-br from-white via-gray-50 to-white dark:text-white text-slate-900">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg shadow-cyan-500/10' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'dark:bg-slate-900/95 bg-white/95 backdrop-blur-md shadow-lg shadow-violet-500/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <button onClick={() => scrollToSection('home')} className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all">
+              <button onClick={() => scrollToSection('home')} className="text-2xl font-bold bg-gradient-to-r from-violet-500 to-purple-500 bg-clip-text text-transparent hover:from-violet-400 hover:to-purple-500 transition-all">
                 SD
               </button>
             </div>
@@ -185,21 +200,30 @@ function App() {
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className={`capitalize transition-all duration-300 relative px-3 py-2 ${activeSection === item.toLowerCase()
-                      ? 'text-cyan-400'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-violet-400'
+                      : 'dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-violet-400'
                     }`}
                 >
                   {item}
                   {activeSection === item.toLowerCase() && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full" />
                   )}
                 </button>
               ))}
             </div>
 
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 rounded-lg dark:hover:bg-slate-800 hover:bg-slate-200 transition-colors dark:text-gray-400 text-slate-500 hover:text-violet-400"
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 rounded-lg hover:bg-slate-800 transition-colors"
+              className="md:hidden p-2 rounded-lg dark:hover:bg-slate-800 hover:bg-slate-200 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -209,15 +233,15 @@ function App() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800">
+          <div className="md:hidden dark:bg-slate-900/95 bg-white/95 backdrop-blur-md border-t dark:border-slate-800 border-slate-200">
             <div className="px-4 py-4 space-y-2">
               {['Home', 'About', 'Skills', 'Experience', 'Projects', 'CV', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${activeSection === item.toLowerCase()
-                      ? 'bg-cyan-500/20 text-cyan-400'
-                      : 'text-gray-300 hover:bg-slate-800 hover:text-white'
+                      ? 'bg-violet-500/20 text-violet-400'
+                      : 'dark:text-gray-300 text-slate-700 dark:hover:bg-slate-800 hover:bg-slate-100 dark:hover:text-white hover:text-violet-400'
                     }`}
                 >
                   {item}
@@ -230,36 +254,35 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.15),transparent_50%)]" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.12),transparent_50%)]" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl animate-pulse-slow" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <div className="flex-1 text-center lg:text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6">
-                <Sparkles size={18} className="text-cyan-400" />
-                <span className="text-cyan-300 text-sm font-medium">Currently Studying</span>
+            <div className="flex-1 text-center lg:text-left">
+              <div className="mb-4">
+                <span className="text-violet-400 font-medium text-sm tracking-wider uppercase">— From Nepal</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-                <span className="block text-white">Hi, I'm</span>
-                <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mt-2">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                <span className="block dark:text-white text-slate-900">Hey, I'm</span>
+                <span className="block bg-gradient-to-r from-violet-500 via-purple-500 to-violet-500 bg-clip-text text-transparent mt-1">
                   Swarup Dahal
                 </span>
               </h1>
 
-              <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-2xl">
-                QA and Data | <span className="text-cyan-400">AI/ML Enthusiast</span> | Tech Enthusiast
+              <p className="text-lg sm:text-xl dark:text-gray-300 text-slate-700 mb-8 max-w-xl leading-relaxed">
+                I write code, break things on purpose (QA), and teach machines to think. 
+                Currently diving deep into <span className="text-violet-400 font-medium">AI/ML</span> while keeping software honest through testing.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-                <div className="flex items-center gap-2 text-gray-400">
-                  <MapPin size={20} className="text-cyan-400" />
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                <div className="flex items-center gap-2 px-3 py-1.5 dark:bg-slate-800/40 bg-white/80 rounded-full dark:text-gray-400 text-slate-500 text-sm">
+                  <MapPin size={16} className="text-violet-400" />
                   <span>Nepal</span>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-                <div className="flex items-center gap-2 text-gray-400">
+                <div className="w-1 h-1 rounded-full dark:bg-slate-600 bg-slate-300" />
+                <div className="flex items-center gap-2 dark:text-gray-400 text-slate-500 text-sm">
                   <span>UTC +05:45</span>
                 </div>
               </div>
@@ -267,15 +290,15 @@ function App() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 rounded-xl font-semibold text-white shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-300"
                 >
-                  View Projects
+                  See my work
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="px-8 py-4 bg-slate-800/50 border border-cyan-500/30 rounded-xl font-semibold text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300"
+                  className="px-8 py-4 dark:bg-slate-800/50 bg-white border border-violet-500/30 rounded-xl font-semibold text-violet-400 hover:bg-violet-500/10 hover:border-violet-500/50 transition-all duration-300"
                 >
-                  Get in Touch
+                  Say hello
                 </button>
               </div>
 
@@ -287,7 +310,7 @@ function App() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 bg-slate-800/50 rounded-xl border border-slate-700 text-gray-400 hover:text-white ${social.color} hover:border-transparent transition-all duration-300`}
+                    className={`p-3 dark:bg-slate-800/50 bg-white rounded-xl border dark:border-slate-700 border-slate-200 dark:text-gray-400 text-slate-500 hover:text-white ${social.color} hover:border-transparent transition-all duration-300`}
                   >
                     <social.icon size={22} />
                   </a>
@@ -295,63 +318,33 @@ function App() {
               </div>
             </div>
 
-            <div className="flex-1 flex justify-center lg:justify-end animate-slide-in-right">
+            <div className="flex-1 flex justify-center lg:justify-end">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur-2xl opacity-30 animate-pulse-slow" />
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-1 bg-gradient-to-r from-cyan-500 to-blue-600">
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 rounded-full blur-2xl opacity-30 animate-pulse-slow" />
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-r from-violet-600 to-purple-600">
                   <img
                     src="https://avatars.githubusercontent.com/u/118110852?v=4"
                     alt="Swarup Dahal"
-                    className="w-full h-full rounded-full object-cover border-4 border-slate-900"
+                    className="w-full h-full rounded-full object-cover border-4 dark:border-slate-900 border-slate-200"
                   />
-                </div>
-
-                {/* Floating badges */}
-                <div className="absolute -top-4 -right-4 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl shadow-lg animate-float">
-                  <div className="flex items-center gap-2">
-                    <Brain size={18} className="text-white" />
-                    <span className="text-white font-semibold text-sm">AI/ML</span>
-                  </div>
-                </div>
-                <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
-                  <div className="flex items-center gap-2">
-                    <Database size={18} className="text-white" />
-                    <span className="text-white font-semibold text-sm">Data</span>
-                  </div>
-                </div>
-                <div className="absolute top-1/2 -right-8 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl shadow-lg animate-float" style={{ animationDelay: '2s' }}>
-                  <div className="flex items-center gap-2">
-                    <TestTube size={18} className="text-white" />
-                    <span className="text-white font-semibold text-sm">QA</span>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <button onClick={() => scrollToSection('about')} className="text-cyan-400 hover:text-cyan-300 transition-colors">
-              <ChevronDown size={32} />
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* GitHub Stats Section */}
-      <section className="py-16 bg-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className="group relative bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                <stat.icon className="w-8 h-8 text-cyan-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+      {/* GitHub Stats */}
+      <section className="py-16 dark:bg-slate-900/30 bg-gray-50/80">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className={`text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mb-1`}>
+                  {stat.value}
+                </div>
+                <div className="dark:text-gray-400 text-slate-500 text-sm tracking-wide">{stat.label}</div>
+                <div className={`mt-2 w-12 h-0.5 mx-auto rounded-full bg-gradient-to-r ${stat.color}`} />
               </div>
             ))}
           </div>
@@ -363,31 +356,33 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 order-2 lg:order-1">
-              <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">About Me</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3 mb-6">
-                Passionate about <span className="text-cyan-400">Technology</span> and Innovation
+              <div className="inline-block">
+                <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">About Me</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 mb-6 leading-tight">
+                I break things <span className="text-violet-400">for a living</span> — and build them too
               </h2>
-              <div className="space-y-4 text-gray-300 leading-relaxed">
+              <div className="space-y-4 dark:text-gray-300 text-slate-700 leading-relaxed">
                 <p>
-                  I'm a dedicated tech enthusiast from Nepal with a passion for Quality Assurance, Data Analysis,
-                  and Artificial Intelligence. Currently pursuing my studies while actively exploring the
-                  intersection of AI/ML and practical applications.
+                  I'm Swarup, a QA engineer from Nepal who accidentally fell in love with AI/ML along the way. 
+                  My days are spent automating tests, breaking software so it can be fixed stronger, 
+                  and sneaking in PyTorch tutorials whenever I can.
                 </p>
                 <p>
-                  My journey in technology has led me to work with diverse programming languages and frameworks,
-                  from C and C++ for systems programming to Python for AI/ML applications. I believe in
-                  continuous learning and building projects that make a difference.
+                  I started with C and C++ (thanks, university), got hooked on Python, and now I'm that person 
+                  who writes Selenium scripts in their sleep. At Infiloop, I build test frameworks. 
+                  At night, I teach machines to see and understand.
                 </p>
-                <p>
-                  With 33 repositories and 167 stars on GitHub, I'm constantly working on new projects
-                  and contributing to the open-source community. My goal is to leverage AI and data-driven
-                  solutions to solve real-world problems.
+                <p className="dark:text-gray-400 text-slate-500 italic border-l-2 dark:border-slate-600 border-slate-300 pl-4">
+                  "The code works but I don't know why. The test fails but I don't know why. 
+                  This is my life now and I wouldn't trade it."
                 </p>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 {['AI/ML', 'Data Analysis', 'QA Automation', 'Python', 'C/C++'].map((tag) => (
-                  <span key={tag} className="px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium hover:bg-cyan-500/20 transition-colors">
+                  <span key={tag} className="px-4 py-2 bg-violet-500/10 border border-violet-500/30 rounded-full text-violet-400 text-sm font-medium hover:bg-violet-500/20 transition-colors">
                     {tag}
                   </span>
                 ))}
@@ -395,16 +390,16 @@ function App() {
             </div>
 
             <div className="flex-1 order-1 lg:order-2">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-300" />
-                <div className="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-violet-400/30 rounded-2xl" />
+                <div className="relative dark:bg-slate-800/80 bg-white rounded-2xl p-8 shadow-lg dark:shadow-violet-500/5 shadow-violet-500/10">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center">
                       <Sparkles className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">My Focus Areas</h3>
-                      <p className="text-gray-400 text-sm">What I'm passionate about</p>
+                      <h3 className="text-xl font-bold dark:text-white text-slate-900">What I do</h3>
+                      <p className="dark:text-gray-400 text-slate-500 text-sm">The short version</p>
                     </div>
                   </div>
 
@@ -415,16 +410,17 @@ function App() {
                       { title: 'Data Science', desc: 'NumPy, Pandas, Data Visualization' },
                       { title: 'Software Development', desc: 'C/C++, Python, Java, C#' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-slate-700/30 hover:bg-slate-700/50 transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400 mt-2" />
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-700/30 bg-slate-100 dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-violet-400 mt-2 shrink-0" />
                         <div>
-                          <div className="font-semibold text-white">{item.title}</div>
-                          <div className="text-sm text-gray-400">{item.desc}</div>
+                          <div className="font-semibold dark:text-white text-slate-900">{item.title}</div>
+                          <div className="text-sm dark:text-gray-400 text-slate-500">{item.desc}</div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-purple-400/30 rounded-2xl -z-10" />
               </div>
             </div>
           </div>
@@ -432,35 +428,37 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 lg:py-32 bg-slate-900/50">
+      <section id="skills" className="py-20 lg:py-32 dark:bg-slate-900/50 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">What I Know</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
-              Skills & <span className="text-cyan-400">Expertise</span>
+          <div className="max-w-2xl mb-16">
+            <div className="inline-block">
+              <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">What I Know</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
+              Tools I actually <span className="text-violet-400">use</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              A diverse skill set spanning programming languages, AI/ML tools, and development frameworks
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Programming Languages */}
-            <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <Code2 className="text-cyan-400" />
-                Programming Languages
+            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-violet-500/5 shadow-violet-500/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
+              <h3 className="text-2xl font-bold dark:text-white text-slate-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                  <Code2 className="w-5 h-5 text-white" />
+                </div>
+                Languages
               </h3>
               <div className="space-y-5">
-                {skills.languages.map((skill, i) => (
-                  <div key={skill.name} style={{ animationDelay: `${i * 0.1}s` }}>
+                {skills.languages.map((skill) => (
+                  <div key={skill.name}>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-cyan-400">{skill.level}%</span>
+                      <span className="dark:text-gray-300 text-slate-700 font-medium">{skill.name}</span>
+                      <span className="text-violet-400">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-2 dark:bg-slate-700 bg-slate-200 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full transition-all duration-1000 ease-out"
+                        className="h-full bg-gradient-to-r from-violet-600 to-purple-600 rounded-full transition-all duration-1000 ease-out"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
@@ -470,44 +468,48 @@ function App() {
             </div>
 
             {/* AI/ML Tools */}
-            <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <Brain className="text-cyan-400" />
-                AI/ML Libraries
+            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-violet-500/5 shadow-violet-500/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
+              <h3 className="text-2xl font-bold dark:text-white text-slate-900 mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                  <Brain className="w-5 h-5 text-white" />
+                </div>
+                AI/ML
               </h3>
               <div className="flex flex-wrap gap-3">
                 {skills.aiml.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-3 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-xl text-cyan-300 font-medium hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
+                    className="px-4 py-3 bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/30 rounded-xl text-violet-300 font-medium hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
 
-              <h4 className="text-lg font-bold text-white mt-8 mb-4">Frameworks & Tools</h4>
-              <div className="flex flex-wrap gap-3">
-                {skills.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-4 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-gray-300 text-sm font-medium hover:bg-slate-700 hover:border-cyan-500/50 transition-all duration-300"
-                  >
-                    {tool}
-                  </span>
-                ))}
+              <div className="mt-8 pt-6 border-t dark:border-slate-700/50 border-slate-200">
+                <h4 className="text-base font-bold dark:text-white text-slate-900 mb-4">Dev Tools</h4>
+                <div className="flex flex-wrap gap-2">
+                  {skills.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="px-3 py-1.5 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg dark:text-gray-300 text-slate-700 text-sm font-medium dark:hover:bg-slate-700 hover:bg-slate-200 hover:border-violet-500/50 transition-all duration-300"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Other Skills */}
-          <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50">
-            <h3 className="text-xl font-bold text-white mb-6">Other Skills & Tools</h3>
-            <div className="flex flex-wrap gap-3">
+          {/* Other Skills - inline style */}
+          <div>
+            <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-4">Also familiar with</h3>
+            <div className="flex flex-wrap gap-2">
               {skills.other.map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-gray-300 text-sm font-medium hover:bg-slate-700 hover:border-cyan-500/50 transition-all duration-300"
+                  className="px-3 py-1.5 dark:bg-slate-800/30 bg-white rounded-lg dark:text-gray-400 text-slate-600 text-sm dark:border dark:border-slate-700/30 border border-slate-200"
                 >
                   {skill}
                 </span>
@@ -518,14 +520,19 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 lg:py-32 bg-slate-900/50">
+      <section id="experience" className="py-20 lg:py-32 dark:bg-slate-900/50 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">My Journey</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
-              Work <span className="text-cyan-400">Experience</span>
-            </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">
+            <div>
+              <div className="inline-block">
+                <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">My Journey</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
+                Where I've <span className="text-violet-400">worked</span>
+              </h2>
+            </div>
+            <p className="dark:text-gray-400 text-slate-500 max-w-md lg:text-right">
               Professional experience in quality assurance and testing
             </p>
           </div>
@@ -533,33 +540,33 @@ function App() {
           <div className="space-y-6 max-w-4xl mx-auto">
             {experience.map((job, index) => (
               <div key={index} className="relative">
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-600" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full" />
 
                 <a
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block ml-8 p-8 bg-slate-800/50 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-800/70 transition-all duration-300 group"
+                  className="block ml-8 p-8 dark:bg-slate-800/50 bg-white rounded-2xl dark:border dark:border-slate-700/50 border border-slate-200 hover:border-violet-500/50 dark:hover:bg-slate-800/70 hover:bg-slate-50 transition-all duration-300 group"
                 >
-                  <div className="absolute left-[-17px] top-8 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 border-4 border-slate-900 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute left-[-17px] top-8 w-9 h-9 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 border-4 dark:border-slate-900 border-slate-200 group-hover:scale-110 transition-transform duration-300" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">{job.title}</h3>
-                      <p className="text-cyan-400 font-semibold mt-1">{job.company}</p>
+                      <h3 className="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-violet-400 transition-colors">{job.title}</h3>
+                      <p className="text-violet-400 font-semibold mt-1">{job.company}</p>
                     </div>
-                    <div className="mt-4 sm:mt-0 flex items-center gap-2 text-gray-400">
+                    <div className="mt-4 sm:mt-0 flex items-center gap-2 dark:text-gray-400 text-slate-500">
                       <Calendar size={16} />
                       <span className="text-sm font-medium">{job.period}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-400 mb-4">{job.description}</p>
+                  <p className="dark:text-gray-400 text-slate-500 mb-4">{job.description}</p>
 
                   <ul className="space-y-2">
                     {job.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-3 text-gray-300">
-                        <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
+                      <li key={i} className="flex items-start gap-3 dark:text-gray-300 text-slate-700">
+                        <span className="inline-block w-2 h-2 rounded-full bg-violet-400 mt-2 shrink-0" />
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -574,54 +581,63 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">My Work</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
-              Featured <span className="text-cyan-400">Projects</span>
-            </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              A selection of projects showcasing my skills in various domains
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">
+            <div>
+              <div className="inline-block">
+                <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">My Work</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
+                Stuff I've <span className="text-violet-400">built</span>
+              </h2>
+            </div>
+            <p className="dark:text-gray-400 text-slate-500 max-w-md lg:text-right">
+              Side projects, assignments, and things I tinkered with
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project) => (
+            {projects.map((project, idx) => (
               <a
                 key={project.title}
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 hover:scale-[1.02]"
+                className={`group relative dark:bg-slate-800/50 bg-white overflow-hidden dark:border dark:border-slate-700/30 border border-slate-200 transition-all duration-500 hover:scale-[1.02] ${
+                  idx % 3 === 0 ? 'rounded-3xl shadow-lg dark:shadow-violet-500/5 shadow-violet-500/5' :
+                  idx % 3 === 1 ? 'rounded-xl shadow-md dark:shadow-violet-500/5 shadow-violet-500/5' :
+                  'rounded-2xl'
+                }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-purple-600 transform origin-left transition-transform duration-500 ${
+                  idx % 3 === 0 ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
 
                 <div className="relative p-8">
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <project.icon className="w-7 h-7 text-white" />
                     </div>
-                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors duration-300" />
+                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-violet-400 transition-colors duration-300" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                  <h3 className="text-xl font-bold dark:text-white text-slate-900 mb-3 group-hover:text-violet-400 transition-colors duration-300">
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 mb-6 line-clamp-2">{project.description}</p>
+                  <p className="dark:text-gray-400 text-slate-500 mb-6 line-clamp-2">{project.description}</p>
 
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded-lg text-xs text-gray-300 group-hover:border-cyan-500/30 transition-colors duration-300"
+                        className="px-3 py-1 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg text-xs dark:text-gray-300 text-slate-700 group-hover:border-violet-500/30 transition-colors duration-300"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-
-                <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </a>
             ))}
           </div>
@@ -631,7 +647,7 @@ function App() {
               href="https://github.com/swarrup17"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-semibold text-gray-300 hover:text-white hover:bg-slate-800 hover:border-cyan-500/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 dark:bg-slate-800/50 bg-white border dark:border-slate-700 border-slate-200 rounded-xl font-semibold dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-slate-900 dark:hover:bg-slate-800 hover:bg-slate-100 hover:border-violet-500/50 transition-all duration-300"
             >
               <Github size={20} />
               View All Projects on GitHub
@@ -643,13 +659,16 @@ function App() {
       {/* CV Section */}
       <section id="cv" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">My Resume</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
-              Curriculum <span className="text-cyan-400">Vitae</span>
+          <div className="max-w-2xl mb-16">
+            <div className="inline-block">
+              <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">My Resume</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
+              The official <span className="text-violet-400">document</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              View my detailed resume and qualifications
+            <p className="dark:text-gray-400 text-slate-500 mt-4">
+              One-page summary of everything I've done so far
             </p>
           </div>
 
@@ -657,7 +676,7 @@ function App() {
             <div className="grid lg:grid-cols-3 gap-8">
               {/* CV Image */}
               <div className="lg:col-span-2">
-                <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 group bg-slate-800/50 p-2">
+                <div className="relative rounded-2xl overflow-hidden border-2 dark:border-slate-700/50 border-slate-200 hover:border-violet-500/50 transition-all duration-300 group dark:bg-slate-800/50 bg-white p-2">
                   <img
                     src="/swarup_dahal_resume_page-0001.jpg"
                     alt="Swarup Dahal Resume"
@@ -669,18 +688,18 @@ function App() {
 
               {/* CV Download Card */}
               <div className="flex flex-col gap-6">
-                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-fit">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center mb-6">
+                <div className="dark:bg-slate-800/50 bg-white rounded-2xl p-6 border dark:border-slate-700/50 border-slate-200 hover:border-violet-500/50 transition-all duration-300 h-fit">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center mb-6">
                     <FileText className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">Resume</h3>
-                  <p className="text-gray-400 text-sm mb-6">
+                  <h3 className="text-xl font-bold dark:text-white text-slate-900 mb-3">Resume</h3>
+                  <p className="dark:text-gray-400 text-slate-500 text-sm mb-6">
                     Download my complete resume with detailed education, experience, skills, and certifications.
                   </p>
                   <a
                     href="/swarup_dahal_resume_page-0001.jpg"
                     download
-                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-violet-500/50 transition-all duration-300 hover:scale-105"
                   >
                     <Download size={18} />
                     Download PDF
@@ -688,28 +707,28 @@ function App() {
                 </div>
 
                 {/* Quick Stats */}
-                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 space-y-4">
-                  <h4 className="text-lg font-bold text-white mb-4">Highlights</h4>
+                <div className="dark:bg-slate-800/50 bg-white rounded-2xl p-6 border dark:border-slate-700/50 border-slate-200 space-y-4">
+                  <h4 className="text-lg font-bold dark:text-white text-slate-900 mb-4">Highlights</h4>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <Briefcase className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <Briefcase className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-sm font-semibold text-white">QA Engineer</div>
-                        <div className="text-xs text-gray-400">Zakipoint Health</div>
+                        <div className="text-sm font-semibold dark:text-white text-slate-900">QA Engineer</div>
+                        <div className="text-xs dark:text-gray-400 text-slate-500">Zakipoint Health</div>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <GraduationCap className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <GraduationCap className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-sm font-semibold text-white">B.S. Computer Science</div>
-                        <div className="text-xs text-gray-400">NCCS, Nepal</div>
+                        <div className="text-sm font-semibold dark:text-white text-slate-900">B.S. Computer Science</div>
+                        <div className="text-xs dark:text-gray-400 text-slate-500">NCCS, Nepal</div>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <TestTube className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <TestTube className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-sm font-semibold text-white">QA Automation</div>
-                        <div className="text-xs text-gray-400">Robot Framework, Selenium</div>
+                        <div className="text-sm font-semibold dark:text-white text-slate-900">QA Automation</div>
+                        <div className="text-xs dark:text-gray-400 text-slate-500">Robot Framework, Selenium</div>
                       </div>
                     </div>
                   </div>
@@ -721,31 +740,34 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-32 bg-slate-900/50">
+      <section id="contact" className="py-20 lg:py-32 dark:bg-slate-900/50 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
-              Let's <span className="text-cyan-400">Connect</span>
+          <div className="max-w-2xl mb-16">
+            <div className="inline-block">
+              <span className="text-violet-400 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
+              Let's <span className="text-violet-400">talk</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision
+            <p className="dark:text-gray-400 text-slate-500 mt-4">
+              Whether it's a project, a debug session, or just geeking out about AI — my inbox is open
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-slate-700/50">
+            <div className="dark:bg-slate-800/50 bg-white backdrop-blur-sm rounded-2xl p-8 sm:p-12 border dark:border-slate-700/50 border-slate-200">
               <div className="space-y-6">
                 <a
                   href="mailto:swarupdahal17@gmail.com"
-                  className="flex items-center gap-4 p-4 bg-slate-700/30 rounded-xl hover:bg-slate-700/50 transition-all duration-300 group"
+                  className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm text-gray-400">Email</div>
-                    <div className="text-white font-medium">swarupdahal17@gmail.com</div>
+                    <div className="text-sm dark:text-gray-400 text-slate-500">Email</div>
+                    <div className="dark:text-white text-slate-900 font-medium">swarupdahal17@gmail.com</div>
                   </div>
                 </a>
 
@@ -755,16 +777,17 @@ function App() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 bg-slate-700/30 rounded-xl hover:bg-slate-700/50 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-slate-700 border border-slate-600 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:border-cyan-500/50 transition-all duration-300">
-                      <social.icon className="w-6 h-6 text-cyan-400" />
+                    <div className="w-12 h-12 rounded-xl dark:bg-slate-700 bg-slate-100 border dark:border-slate-600 border-slate-300 flex items-center justify-center group-hover:bg-violet-500/20 group-hover:border-violet-500/50 transition-all duration-300">
+                      <social.icon className="w-6 h-6 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm text-gray-400">{social.name}</div>
-                      <div className="text-white font-medium">@{social.name.toLowerCase()}</div>
+                      <div className="text-sm dark:text-gray-400 text-slate-500">{social.name}</div>
+<div className="dark:text-white text-slate-900 
+                      font-medium">@{social.name.toLowerCase()}</div>
                     </div>
-                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-violet-400 transition-colors" />
                   </a>
                 ))}
               </div>
@@ -774,11 +797,11 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-800">
+      <footer className="py-10 border-t dark:border-slate-800/50 border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-gray-400 text-sm">
-              Built with passion by Swarup Dahal
+            <div className="dark:text-gray-400 text-slate-500 text-sm">
+              Made with <span className="text-violet-400">&#9829;</span> by Swarup Dahal &mdash; Nepal
             </div>
             <div className="flex items-center gap-4">
               {socialLinks.slice(0, 3).map((social) => (
@@ -787,12 +810,15 @@ function App() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+                  className="dark:text-gray-400 text-slate-500 hover:text-violet-400 transition-colors duration-300"
                 >
                   <social.icon size={20} />
                 </a>
               ))}
             </div>
+          </div>
+          <div className="mt-6 text-center sm:text-left">
+            <div className="squiggle-divider" />
           </div>
         </div>
       </footer>
