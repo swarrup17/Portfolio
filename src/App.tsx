@@ -185,7 +185,7 @@ function App() {
                   alt="Swarup Dahal"
                   className="w-8 h-8 rounded-full border-2 border-blue-500/50 group-hover:border-blue-500 transition-all duration-300"
                 />
-                <span className="text-sm font-bold tracking-wider dark:text-white text-slate-900">
+                <span className="text-sm font-bold tracking-wider text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   SWARUP DAHAL
                 </span>
               </button>
