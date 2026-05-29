@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://swarrup17.github.io",
+  "homepage": "https://swarrup17.github.io/Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

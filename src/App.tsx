@@ -678,7 +678,7 @@ function App() {
               <div className="lg:col-span-2">
                 <div className="relative rounded-2xl overflow-hidden border-2 dark:border-slate-700/50 border-slate-200 hover:border-violet-500/50 transition-all duration-300 group dark:bg-slate-800/50 bg-white p-2">
                   <img
-                    src="/swarup_dahal_resume_page-0001.jpg"
+                    src="./swarup_dahal_resume_page-0001.jpg"
                     alt="Swarup Dahal Resume"
                     className="w-full h-auto rounded-xl object-cover group-hover:scale-[1.02] transition-transform duration-300"
                   />
@@ -697,7 +697,7 @@ function App() {
                     Download my complete resume with detailed education, experience, skills, and certifications.
                   </p>
                   <a
-                    href="/swarup_dahal_resume_page-0001.jpg"
+                    href="./swarup_dahal_resume_page-0001.jpg"
                     download
                     className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-violet-500/50 transition-all duration-300 hover:scale-105"
                   >
