@@ -34,15 +34,15 @@ import {
 const skills = {
   languages: [
     { name: 'Python', level: 90 },
-    { name: 'C/C++', level: 85 },
+    { name: 'C/C++', level: 50 },
     { name: 'JavaScript', level: 80 },
-    { name: 'Java', level: 75 },
-    { name: 'C#', level: 70 },
+    { name: 'MySQL', level: 75 },
+    {name: 'PostgreSQL', level: 70 },
     { name: 'PHP', level: 65 },
   ],
-  aiml: ['TensorFlow', 'Keras', 'PyTorch', 'OpenCV', 'NumPy', 'Pandas', 'Matplotlib'],
-  tools: ['GitHub', 'VS Code', 'PyCharm', 'Visual Studio', 'Selenium', 'Robot Framework', 'Flask', '.NET', 'Opencode Codex', 'Antigravity CLI (agy)'],
-  other: ['HTML5', 'CSS3', 'Figma', 'Canva', 'JDK', 'JDBC'],
+  AIML: ['TensorFlow', 'Keras', 'PyTorch', 'OpenCV', 'NumPy', 'Pandas', 'Matplotlib'],
+  Tools: ['GitHub', 'VS Code', 'PyCharm', 'Visual Studio', 'Selenium', 'Robot Framework', 'Flask', 'Opencode', 'Codex', 'Antigravity CLI (agy)'],
+  Other: ['HTML5', 'CSS3', 'Figma', 'Canva', 'JDK', 'JDBC'],
 };
 
 const stats = [
@@ -179,8 +179,12 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <button onClick={() => scrollToSection('home')} className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent hover:from-blue-400 hover:to-cyan-500 transition-all font-mono">
-                ~/sd
+              <button onClick={() => scrollToSection('home')} className="flex items-center gap-2 group">
+                <img
+                  src="https://avatars.githubusercontent.com/u/118110852?v=4"
+                  alt="Swarup Dahal"
+                  className="w-8 h-8 rounded-full border-2 border-blue-500/50 group-hover:border-blue-500 transition-all duration-300"
+                />
               </button>
             </div>
 
@@ -253,8 +257,8 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="flex-1 text-center lg:text-left">
-              <div className="mb-4">
-                <span className="text-gray-500 dark:text-gray-600 font-mono text-sm tracking-wider">// From Nepal</span>
+              <div className="mb-1">
+                <span className="text-gray-500 dark:text-gray-600 text-sm tracking-wider">From Kathmandu, Nepal</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
@@ -272,7 +276,7 @@ function App() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
                 <div className="flex items-center gap-2 px-3 py-1.5 dark:bg-slate-800/40 bg-white/80 rounded-full dark:text-gray-400 text-slate-500 text-sm">
                   <MapPin size={16} className="text-blue-500" />
-                  <span>Nepal</span>
+                  <span>Kathmandu, Nepal</span>
                 </div>
                 <div className="w-1 h-1 rounded-full dark:bg-slate-600 bg-slate-300" />
                 <div className="flex items-center gap-2 dark:text-gray-400 text-slate-500 text-sm">
@@ -470,7 +474,7 @@ function App() {
                 AI/ML
               </h3>
               <div className="flex flex-wrap gap-3">
-                {skills.aiml.map((skill) => (
+                {skills.AIML.map((skill) => (
                   <span
                     key={skill}
                     className="px-4 py-3 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl text-blue-400 font-medium hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
@@ -483,7 +487,7 @@ function App() {
               <div className="mt-8 pt-6 border-t dark:border-slate-700/50 border-slate-200">
                 <h4 className="text-base font-bold dark:text-white text-slate-900 mb-4">Dev Tools</h4>
                 <div className="flex flex-wrap gap-2">
-                  {skills.tools.map((tool) => (
+                  {skills.Tools.map((tool) => (
                     <span
                       key={tool}
                       className="px-3 py-1.5 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg dark:text-gray-300 text-slate-700 text-sm font-medium dark:hover:bg-slate-700 hover:bg-slate-200 hover:border-blue-500/50 transition-all duration-300"
@@ -500,7 +504,7 @@ function App() {
           <div>
             <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-4">Also familiar with</h3>
             <div className="flex flex-wrap gap-2">
-              {skills.other.map((skill) => (
+              {skills.Other.map((skill) => (
                 <span
                   key={skill}
                   className="px-3 py-1.5 dark:bg-slate-800/30 bg-white rounded-lg dark:text-gray-400 text-slate-600 text-sm dark:border dark:border-slate-700/30 border border-slate-200"
