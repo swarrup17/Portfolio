@@ -23,7 +23,11 @@ import {
   Mountain,
   BookOpen,
   GraduationCap,
-  Gamepad2
+  Gamepad2,
+  Briefcase,
+  Calendar,
+  FileText,
+  Download
 } from 'lucide-react';
 
 const skills = {
@@ -53,6 +57,38 @@ const socialLinks = [
   { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/Swarupdahal1', color: 'hover:bg-sky-500' },
   { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/_swarup_dahal_', color: 'hover:bg-pink-600' },
   { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/swarupd.17', color: 'hover:bg-blue-700' },
+];
+
+const experience = [
+  {
+    title: 'QA Engineer',
+    company: 'Zakipoint Health',
+    period: 'Present',
+    duration: 'Currently employed',
+    url: 'https://www.zakipointhealth.com/',
+    description: 'Quality assurance engineer responsible for automated and manual testing of healthcare applications.',
+    achievements: [
+      'Automated web and mobile testing using Robot Framework and Appium',
+      'Executed manual, regression, and data validation testing using SQL',
+      'Designed and maintained test cases and automation suites for healthcare applications',
+      'Logged, tracked defects using issue tracking systems and collaborated with development teams',
+      'Integrated automated tests into CI/CD pipelines within an Agile development environment'
+    ]
+  },
+  {
+    title: 'QA Intern',
+    company: 'Zakipoint Health',
+    period: 'November 2025 - February 2026',
+    duration: '4 months',
+    url: 'https://www.zakipointhealth.com/',
+    description: 'Quality Assurance intern gaining hands-on experience in web automation and healthcare application testing.',
+    achievements: [
+      'Automated different demo applications using Robot Framework during internship',
+      'Developed reusable test automation frameworks and libraries for web application testing',
+      'Created comprehensive test suites covering various healthcare workflows',
+      'Collaborated with QA team to identify and document defects'
+    ]
+  }
 ];
 
 const projects = [
@@ -144,7 +180,7 @@ function App() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['Home', 'About', 'Skills', 'Experience', 'Projects', 'CV', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -175,7 +211,7 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800">
             <div className="px-4 py-4 space-y-2">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['Home', 'About', 'Skills', 'Experience', 'Projects', 'CV', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -481,6 +517,60 @@ function App() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="py-20 lg:py-32 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">My Journey</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
+              Work <span className="text-cyan-400">Experience</span>
+            </h2>
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+              Professional experience in quality assurance and testing
+            </p>
+          </div>
+
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {experience.map((job, index) => (
+              <div key={index} className="relative">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-600" />
+
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block ml-8 p-8 bg-slate-800/50 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-800/70 transition-all duration-300 group"
+                >
+                  <div className="absolute left-[-17px] top-8 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 border-4 border-slate-900 group-hover:scale-110 transition-transform duration-300" />
+
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">{job.title}</h3>
+                      <p className="text-cyan-400 font-semibold mt-1">{job.company}</p>
+                    </div>
+                    <div className="mt-4 sm:mt-0 flex items-center gap-2 text-gray-400">
+                      <Calendar size={16} />
+                      <span className="text-sm font-medium">{job.period}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-400 mb-4">{job.description}</p>
+
+                  <ul className="space-y-2">
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-300">
+                        <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -546,6 +636,86 @@ function App() {
               <Github size={20} />
               View All Projects on GitHub
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CV Section */}
+      <section id="cv" className="py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">My Resume</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3">
+              Curriculum <span className="text-cyan-400">Vitae</span>
+            </h2>
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+              View my detailed resume and qualifications
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* CV Image */}
+              <div className="lg:col-span-2">
+                <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 group bg-slate-800/50 p-2">
+                  <img
+                    src="./public/swarup_dahal_resume_page-0001.jpg"
+                    alt="Swarup Dahal Resume"
+                    className="w-full h-auto rounded-xl object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
+
+              {/* CV Download Card */}
+              <div className="flex flex-col gap-6">
+                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-fit">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center mb-6">
+                    <FileText className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">Resume</h3>
+                  <p className="text-gray-400 text-sm mb-6">
+                    Download my complete resume with detailed education, experience, skills, and certifications.
+                  </p>
+                  <a
+                    href="./public/swarup_dahal_resume_page-0001.jpg"
+                    download
+                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+                  >
+                    <Download size={18} />
+                    Download PDF
+                  </a>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 space-y-4">
+                  <h4 className="text-lg font-bold text-white mb-4">Highlights</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Briefcase className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-sm font-semibold text-white">QA Engineer</div>
+                        <div className="text-xs text-gray-400">Zakipoint Health</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <GraduationCap className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-sm font-semibold text-white">B.S. Computer Science</div>
+                        <div className="text-xs text-gray-400">NCCS, Nepal</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <TestTube className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-sm font-semibold text-white">QA Automation</div>
+                        <div className="text-xs text-gray-400">Robot Framework, Selenium</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
