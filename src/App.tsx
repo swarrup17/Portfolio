@@ -179,12 +179,15 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <button onClick={() => scrollToSection('home')} className="flex items-center gap-2 group">
+              <button onClick={() => scrollToSection('home')} className="flex items-center gap-3 group">
                 <img
                   src="https://avatars.githubusercontent.com/u/118110852?v=4"
                   alt="Swarup Dahal"
                   className="w-8 h-8 rounded-full border-2 border-blue-500/50 group-hover:border-blue-500 transition-all duration-300"
                 />
+                <span className="text-sm font-bold tracking-wider dark:text-white text-slate-900">
+                  SWARUP DAHAL
+                </span>
               </button>
             </div>
 
@@ -757,7 +760,7 @@ function App() {
             <div className="dark:bg-slate-800/50 bg-white backdrop-blur-sm rounded-2xl p-8 sm:p-12 border dark:border-slate-700/50 border-slate-200">
               <div className="space-y-6">
                 <a
-                  href="mailto:swarupdahal17@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=swarupdahal17@gmail.com"
                   className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
