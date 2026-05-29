@@ -62,15 +62,15 @@ const socialLinks = [
 const experience = [
   {
     title: 'QA Engineer',
-    company: 'Zakipoint Health',
+    company: 'Infiloop',
     period: 'Present',
     duration: 'Currently employed',
-    url: 'https://www.zakipointhealth.com/',
-    description: 'Quality assurance engineer responsible for automated and manual testing of healthcare applications.',
+    url: 'https://infiloop.co/',
+    description: 'Quality assurance engineer responsible for automated and manual testing.',
     achievements: [
       'Automated web and mobile testing using Robot Framework and Appium',
-      'Executed manual, regression, and data validation testing using SQL',
-      'Designed and maintained test cases and automation suites for healthcare applications',
+      'Executed manual, regression, and data validation,Stress and Load testing K6',
+      'Designed and maintained test cases and automation suites',
       'Logged, tracked defects using issue tracking systems and collaborated with development teams',
       'Integrated automated tests into CI/CD pipelines within an Agile development environment'
     ]
@@ -145,7 +145,7 @@ function App() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'cv', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -585,7 +585,7 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <a
                 key={project.title}
                 href={project.url}
@@ -659,7 +659,7 @@ function App() {
               <div className="lg:col-span-2">
                 <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 group bg-slate-800/50 p-2">
                   <img
-                    src="./public/swarup_dahal_resume_page-0001.jpg"
+                    src="/swarup_dahal_resume_page-0001.jpg"
                     alt="Swarup Dahal Resume"
                     className="w-full h-auto rounded-xl object-cover group-hover:scale-[1.02] transition-transform duration-300"
                   />
@@ -678,7 +678,7 @@ function App() {
                     Download my complete resume with detailed education, experience, skills, and certifications.
                   </p>
                   <a
-                    href="./public/swarup_dahal_resume_page-0001.jpg"
+                    href="/swarup_dahal_resume_page-0001.jpg"
                     download
                     className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
                   >
