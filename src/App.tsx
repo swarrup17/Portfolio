@@ -29,7 +29,8 @@ import {
   Download,
   Sun,
   Moon,
-  Crosshair
+  Crosshair,
+  Terminal
 } from 'lucide-react';
 
 const skills = {
@@ -128,6 +129,20 @@ const projects = [
     tags: ['JavaScript', 'PHP', 'CSS', 'HTML'],
     url: 'https://github.com/swarrup17/Shape-Shooter',
     icon: Crosshair,
+  },
+  {
+    title: 'Opencode Codex',
+    description: 'AI-powered coding assistant codex — a curated knowledge base and tooling reference for the Opencode ecosystem. Includes agent patterns, skill definitions, and configuration guides.',
+    tags: ['AI', 'Documentation', 'Tooling'],
+    url: 'https://github.com/swarrup17/Portfolio',
+    icon: Code2,
+  },
+  {
+    title: 'Antigravity CLI (agy)',
+    description: 'A command-line tool that simplifies project scaffolding, dependency management, and development workflows. Built for speed and developer ergonomics.',
+    tags: ['Go', 'CLI', 'DevTools'],
+    url: 'https://github.com/swarrup17/Portfolio',
+    icon: Terminal,
   },
 ];
 
