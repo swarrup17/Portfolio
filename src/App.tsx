@@ -46,18 +46,18 @@ const skills = {
 };
 
 const stats = [
-  { label: 'Repositories', value: 33, icon: FolderGit2, color: 'from-blue-500 to-cyan-500' },
-  { label: 'Stars Earned', value: 167, icon: Star, color: 'from-yellow-400 to-blue-500' },
+  { label: 'Repositories', value: 33, icon: FolderGit2, color: 'from-emerald-600 to-green-500' },
+  { label: 'Stars Earned', value: 167, icon: Star, color: 'from-yellow-400 to-emerald-600' },
   { label: 'Followers', value: 29, icon: Users, color: 'from-green-400 to-emerald-500' },
   { label: 'Following', value: 33, icon: GitFork, color: 'from-pink-400 to-rose-500' },
 ];
 
 const socialLinks = [
   { name: 'GitHub', icon: Github, url: 'https://github.com/swarrup17', color: 'hover:bg-gray-800' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/swarup-dahal-b9a65225a', color: 'hover:bg-blue-600' },
+  { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/swarup-dahal-b9a65225a', color: 'hover:bg-emerald-600' },
   { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/Swarupdahal1', color: 'hover:bg-sky-500' },
   { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/_swarup_dahal_', color: 'hover:bg-pink-600' },
-  { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/swarupd.17', color: 'hover:bg-blue-700' },
+  { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/swarupd.17', color: 'hover:bg-emerald-700' },
 ];
 
 const experience = [
@@ -175,7 +175,7 @@ function App() {
   return (
     <main className="min-h-screen dark:bg-gradient-to-br dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 bg-gradient-to-br from-white via-gray-50 to-white dark:text-white text-slate-900">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'dark:bg-slate-900/95 bg-white/95 backdrop-blur-md shadow-lg shadow-blue-500/10' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'dark:bg-slate-900/95 bg-white/95 backdrop-blur-md shadow-lg shadow-emerald-600/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
@@ -183,7 +183,7 @@ function App() {
                 <img
                   src="https://avatars.githubusercontent.com/u/118110852?v=4"
                   alt="Swarup Dahal"
-                  className="w-8 h-8 rounded-full border-2 border-blue-500/50 group-hover:border-blue-500 transition-all duration-300"
+                  className="w-8 h-8 rounded-full border-2 border-emerald-600/50 group-hover:border-emerald-600 transition-all duration-300"
                 />
                 <span className="text-sm font-bold tracking-wider text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   SWARUP DAHAL
@@ -199,13 +199,13 @@ function App() {
                   onClick={() => scrollToSection(item.toLowerCase())}
                   aria-current={activeSection === item.toLowerCase() ? 'true' : undefined}
                   className={`capitalize transition-all duration-300 relative px-3 py-2 ${activeSection === item.toLowerCase()
-                      ? 'text-blue-500'
-                      : 'dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-blue-500'
+                      ? 'text-emerald-600'
+                      : 'dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-emerald-600'
                     }`}
                 >
                   {item}
                   {activeSection === item.toLowerCase() && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-600 to-green-500 rounded-full" />
                   )}
                 </button>
               ))}
@@ -214,7 +214,7 @@ function App() {
             {/* Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-lg dark:hover:bg-slate-800 hover:bg-slate-200 transition-colors dark:text-gray-400 text-slate-500 hover:text-blue-500"
+              className="p-2 rounded-lg dark:hover:bg-slate-800 hover:bg-slate-200 transition-colors dark:text-gray-400 text-slate-500 hover:text-emerald-600"
               aria-label="Toggle theme"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -240,8 +240,8 @@ function App() {
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${activeSection === item.toLowerCase()
-                      ? 'bg-blue-500/20 text-blue-500'
-                      : 'dark:text-gray-300 text-slate-700 dark:hover:bg-slate-800 hover:bg-slate-100 dark:hover:text-white hover:text-blue-500'
+                      ? 'bg-emerald-600/20 text-emerald-600'
+                      : 'dark:text-gray-300 text-slate-700 dark:hover:bg-slate-800 hover:bg-slate-100 dark:hover:text-white hover:text-emerald-600'
                     }`}
                 >
                   {item}
@@ -254,8 +254,8 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_50%)]" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(5,150,105,0.12),transparent_50%)]" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl animate-pulse-slow" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -266,19 +266,19 @@ function App() {
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
                 <span className="block dark:text-white text-slate-900 font-mono">Hey, I'm</span>
-                <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent mt-1 font-mono">
+                <span className="block bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text text-transparent mt-1 font-mono">
                   Swarup Dahal
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl dark:text-gray-300 text-slate-700 mb-8 max-w-xl leading-relaxed">
                 I write code, break things on purpose (QA), and teach machines to think. 
-                Currently diving deep into <span className="text-blue-500 font-medium">AI/ML</span> while keeping software honest through testing.
+                Currently diving deep into <span className="text-emerald-600 font-medium">AI/ML</span> while keeping software honest through testing.
               </p>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
                 <div className="flex items-center gap-2 px-3 py-1.5 dark:bg-slate-800/40 bg-white/80 rounded-full dark:text-gray-400 text-slate-500 text-sm">
-                  <MapPin size={16} className="text-blue-500" />
+                  <MapPin size={16} className="text-emerald-600" />
                   <span>Kathmandu, Nepal</span>
                 </div>
                 <div className="w-1 h-1 rounded-full dark:bg-slate-600 bg-slate-300" />
@@ -290,13 +290,13 @@ function App() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl font-semibold text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-emerald-700 to-green-600 rounded-xl font-semibold text-white shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 hover:scale-105 transition-all duration-300"
                 >
                   See my work
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="px-8 py-4 dark:bg-slate-800/50 bg-white border border-blue-500/30 rounded-xl font-semibold text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all duration-300"
+                  className="px-8 py-4 dark:bg-slate-800/50 bg-white border border-emerald-600/30 rounded-xl font-semibold text-emerald-600 hover:bg-emerald-600/10 hover:border-emerald-600/50 transition-all duration-300"
                 >
                   Say hello
                 </button>
@@ -321,8 +321,8 @@ function App() {
 
             <div className="flex-1 flex justify-center lg:justify-end">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur-2xl opacity-30 animate-pulse-slow" />
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-r from-blue-600 to-cyan-600">
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-green-600 rounded-full blur-2xl opacity-30 animate-pulse-slow" />
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-r from-emerald-700 to-green-600">
                   <img
                     src="https://avatars.githubusercontent.com/u/118110852?v=4"
                     alt="Swarup Dahal"
@@ -358,11 +358,11 @@ function App() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 order-2 lg:order-1">
               <div className="inline-block">
-                <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">About Me</span>
-                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+                <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">About Me</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 mb-6 leading-tight">
-                I break things <span className="text-blue-500">for a living</span> — and build them too
+                I break things <span className="text-emerald-600">for a living</span> — and build them too
               </h2>
               <div className="space-y-4 dark:text-gray-300 text-slate-700 leading-relaxed">
                 <p>
@@ -383,7 +383,7 @@ function App() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 {['AI/ML', 'Data Analysis', 'QA Automation', 'Python', 'C/C++'].map((tag) => (
-                  <span key={tag} className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-500 text-sm font-medium hover:bg-blue-500/20 transition-colors">
+                  <span key={tag} className="px-4 py-2 bg-emerald-600/10 border border-emerald-600/30 rounded-full text-emerald-600 text-sm font-medium hover:bg-emerald-600/20 transition-colors">
                     {tag}
                   </span>
                 ))}
@@ -392,10 +392,10 @@ function App() {
 
             <div className="flex-1 order-1 lg:order-2">
               <div className="relative">
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-blue-400/30 rounded-2xl" />
-                <div className="relative dark:bg-slate-800/80 bg-white rounded-2xl p-8 shadow-lg dark:shadow-blue-500/5 shadow-blue-500/10">
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-emerald-500/30 rounded-2xl" />
+                <div className="relative dark:bg-slate-800/80 bg-white rounded-2xl p-8 shadow-lg dark:shadow-emerald-600/5 shadow-emerald-600/10">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-700 to-green-600 flex items-center justify-center">
                       <Sparkles className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -412,7 +412,7 @@ function App() {
                       { title: 'Software Development', desc: 'C/C++, Python, Java, C#' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-700/30 bg-slate-100 dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0" />
                         <div>
                           <div className="font-semibold dark:text-white text-slate-900">{item.title}</div>
                           <div className="text-sm dark:text-gray-400 text-slate-500">{item.desc}</div>
@@ -421,7 +421,7 @@ function App() {
                     ))}
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-cyan-400/30 rounded-2xl -z-10" />
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-emerald-500/30 rounded-2xl -z-10" />
               </div>
             </div>
           </div>
@@ -433,19 +433,19 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <div className="inline-block">
-              <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">What I Know</span>
-              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+              <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">What I Know</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
-              Tools I actually <span className="text-blue-500">use</span>
+              Tools I actually <span className="text-emerald-600">use</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Programming Languages */}
-            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-blue-500/5 shadow-blue-500/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
+            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-emerald-600/5 shadow-emerald-600/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
               <h3 className="text-2xl font-bold dark:text-white text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-green-600 flex items-center justify-center">
                   <Code2 className="w-5 h-5 text-white" />
                 </div>
                 Languages
@@ -455,11 +455,11 @@ function App() {
                   <div key={skill.name}>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="dark:text-gray-300 text-slate-700 font-medium">{skill.name}</span>
-                      <span className="text-blue-500">{skill.level}%</span>
+                      <span className="text-emerald-600">{skill.level}%</span>
                     </div>
                     <div className="h-2 dark:bg-slate-700 bg-slate-200 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full transition-all duration-1000 ease-out"
+                        className="h-full bg-gradient-to-r from-emerald-700 to-green-600 rounded-full transition-all duration-1000 ease-out"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
@@ -469,9 +469,9 @@ function App() {
             </div>
 
             {/* AI/ML Tools */}
-            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-blue-500/5 shadow-blue-500/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
+            <div className="dark:bg-slate-800/50 bg-white rounded-3xl p-8 shadow-lg dark:shadow-emerald-600/5 shadow-emerald-600/5 dark:border dark:border-slate-700/30 border border-slate-200/50">
               <h3 className="text-2xl font-bold dark:text-white text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-green-600 flex items-center justify-center">
                   <Brain className="w-5 h-5 text-white" />
                 </div>
                 AI/ML
@@ -480,7 +480,7 @@ function App() {
                 {skills.AIML.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-3 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl text-blue-400 font-medium hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
+                    className="px-4 py-3 bg-gradient-to-r from-emerald-600/10 to-green-500/10 border border-emerald-600/30 rounded-xl text-emerald-500 font-medium hover:bg-emerald-600/20 hover:border-emerald-500/50 transition-all duration-300"
                   >
                     {skill}
                   </span>
@@ -493,7 +493,7 @@ function App() {
                   {skills.Tools.map((tool) => (
                     <span
                       key={tool}
-                      className="px-3 py-1.5 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg dark:text-gray-300 text-slate-700 text-sm font-medium dark:hover:bg-slate-700 hover:bg-slate-200 hover:border-blue-500/50 transition-all duration-300"
+                      className="px-3 py-1.5 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg dark:text-gray-300 text-slate-700 text-sm font-medium dark:hover:bg-slate-700 hover:bg-slate-200 hover:border-emerald-600/50 transition-all duration-300"
                     >
                       {tool}
                     </span>
@@ -526,11 +526,11 @@ function App() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">
             <div>
               <div className="inline-block">
-                <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">My Journey</span>
-                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+                <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">My Journey</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
-                Where I've <span className="text-blue-500">worked</span>
+                Where I've <span className="text-emerald-600">worked</span>
               </h2>
             </div>
             <p className="dark:text-gray-400 text-slate-500 max-w-md lg:text-right">
@@ -541,20 +541,20 @@ function App() {
           <div className="space-y-6 max-w-4xl mx-auto">
             {experience.map((job, index) => (
               <div key={index} className="relative">
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-600 rounded-full" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-600 to-green-600 rounded-full" />
 
                 <a
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block ml-8 p-8 dark:bg-slate-800/50 bg-white rounded-2xl dark:border dark:border-slate-700/50 border border-slate-200 hover:border-blue-500/50 dark:hover:bg-slate-800/70 hover:bg-slate-50 transition-all duration-300 group"
+                  className="block ml-8 p-8 dark:bg-slate-800/50 bg-white rounded-2xl dark:border dark:border-slate-700/50 border border-slate-200 hover:border-emerald-600/50 dark:hover:bg-slate-800/70 hover:bg-slate-50 transition-all duration-300 group"
                 >
-                  <div className="absolute left-[-17px] top-8 w-9 h-9 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 border-4 dark:border-slate-900 border-slate-200 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute left-[-17px] top-8 w-9 h-9 rounded-full bg-gradient-to-r from-emerald-700 to-green-600 border-4 dark:border-slate-900 border-slate-200 group-hover:scale-110 transition-transform duration-300" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-blue-500 transition-colors">{job.title}</h3>
-                      <p className="text-blue-500 font-semibold mt-1">{job.company}</p>
+                      <h3 className="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-emerald-600 transition-colors">{job.title}</h3>
+                      <p className="text-emerald-600 font-semibold mt-1">{job.company}</p>
                     </div>
                     <div className="mt-4 sm:mt-0 flex items-center gap-2 dark:text-gray-400 text-slate-500">
                       <Calendar size={16} />
@@ -567,7 +567,7 @@ function App() {
                   <ul className="space-y-2">
                     {job.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-start gap-3 dark:text-gray-300 text-slate-700">
-                        <span className="inline-block w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0" />
+                        <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0" />
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -585,11 +585,11 @@ function App() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">
             <div>
               <div className="inline-block">
-                <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">My Work</span>
-                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+                <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">My Work</span>
+                <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
-                Stuff I've <span className="text-blue-500">built</span>
+                Stuff I've <span className="text-emerald-600">built</span>
               </h2>
             </div>
             <p className="dark:text-gray-400 text-slate-500 max-w-md lg:text-right">
@@ -605,24 +605,24 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group relative dark:bg-slate-800/50 bg-white overflow-hidden dark:border dark:border-slate-700/30 border border-slate-200 transition-all duration-500 hover:scale-[1.02] ${
-                  idx % 3 === 0 ? 'rounded-3xl shadow-lg dark:shadow-blue-500/5 shadow-blue-500/5' :
-                  idx % 3 === 1 ? 'rounded-xl shadow-md dark:shadow-blue-500/5 shadow-blue-500/5' :
+                  idx % 3 === 0 ? 'rounded-3xl shadow-lg dark:shadow-emerald-600/5 shadow-emerald-600/5' :
+                  idx % 3 === 1 ? 'rounded-xl shadow-md dark:shadow-emerald-600/5 shadow-emerald-600/5' :
                   'rounded-2xl'
                 }`}
               >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-600 transform origin-left transition-transform duration-500 ${
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-green-600 transform origin-left transition-transform duration-500 ${
                   idx % 3 === 0 ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`} />
 
                 <div className="relative p-8">
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-emerald-700 to-green-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <project.icon className="w-7 h-7 text-white" />
                     </div>
-                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-blue-500 transition-colors duration-300" />
+                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-emerald-600 transition-colors duration-300" />
                   </div>
 
-                  <h3 className="text-xl font-bold dark:text-white text-slate-900 mb-3 group-hover:text-blue-500 transition-colors duration-300">
+                  <h3 className="text-xl font-bold dark:text-white text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">
                     {project.title}
                   </h3>
 
@@ -632,7 +632,7 @@ function App() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg text-xs dark:text-gray-300 text-slate-700 group-hover:border-blue-500/30 transition-colors duration-300"
+                        className="px-3 py-1 dark:bg-slate-700/50 bg-slate-100 border dark:border-slate-600/50 border-slate-300 rounded-lg text-xs dark:text-gray-300 text-slate-700 group-hover:border-emerald-600/30 transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -648,7 +648,7 @@ function App() {
               href="https://github.com/swarrup17"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 dark:bg-slate-800/50 bg-white border dark:border-slate-700 border-slate-200 rounded-xl font-semibold dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-slate-900 dark:hover:bg-slate-800 hover:bg-slate-100 hover:border-blue-500/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 dark:bg-slate-800/50 bg-white border dark:border-slate-700 border-slate-200 rounded-xl font-semibold dark:text-gray-300 text-slate-700 dark:hover:text-white hover:text-slate-900 dark:hover:bg-slate-800 hover:bg-slate-100 hover:border-emerald-600/50 transition-all duration-300"
             >
               <Github size={20} />
               View All Projects on GitHub
@@ -662,11 +662,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <div className="inline-block">
-              <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">My Resume</span>
-              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+              <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">My Resume</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
-              The official <span className="text-blue-500">document</span>
+              The official <span className="text-emerald-600">document</span>
             </h2>
             <p className="dark:text-gray-400 text-slate-500 mt-4">
               One-page summary of everything I've done so far
@@ -677,7 +677,7 @@ function App() {
             <div className="grid lg:grid-cols-3 gap-8">
               {/* CV Image */}
               <div className="lg:col-span-2">
-                <div className="relative rounded-2xl overflow-hidden border-2 dark:border-slate-700/50 border-slate-200 hover:border-blue-500/50 transition-all duration-300 group dark:bg-slate-800/50 bg-white p-2">
+                <div className="relative rounded-2xl overflow-hidden border-2 dark:border-slate-700/50 border-slate-200 hover:border-emerald-600/50 transition-all duration-300 group dark:bg-slate-800/50 bg-white p-2">
                   <img
                     src="./swarup_dahal_resume_page-0001.jpg"
                     alt="Swarup Dahal Resume"
@@ -689,8 +689,8 @@ function App() {
 
               {/* CV Download Card */}
               <div className="flex flex-col gap-6">
-                <div className="dark:bg-slate-800/50 bg-white rounded-2xl p-6 border dark:border-slate-700/50 border-slate-200 hover:border-blue-500/50 transition-all duration-300 h-fit">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center mb-6">
+                <div className="dark:bg-slate-800/50 bg-white rounded-2xl p-6 border dark:border-slate-700/50 border-slate-200 hover:border-emerald-600/50 transition-all duration-300 h-fit">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-emerald-700 to-green-600 flex items-center justify-center mb-6">
                     <FileText className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-xl font-bold dark:text-white text-slate-900 mb-3">Resume</h3>
@@ -700,7 +700,7 @@ function App() {
                   <a
                     href="./swarup_dahal_resume_page-0001.jpg"
                     download
-                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-emerald-700 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-600/50 transition-all duration-300 hover:scale-105"
                   >
                     <Download size={18} />
                     Download PDF
@@ -712,21 +712,21 @@ function App() {
                   <h4 className="text-lg font-bold dark:text-white text-slate-900 mb-4">Highlights</h4>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <Briefcase className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <Briefcase className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <div className="text-sm font-semibold dark:text-white text-slate-900">QA Engineer</div>
                         <div className="text-xs dark:text-gray-400 text-slate-500">Zakipoint Health</div>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <GraduationCap className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <GraduationCap className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <div className="text-sm font-semibold dark:text-white text-slate-900">B.S. Computer Science</div>
                         <div className="text-xs dark:text-gray-400 text-slate-500">NCCS, Nepal</div>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <TestTube className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <TestTube className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <div className="text-sm font-semibold dark:text-white text-slate-900">QA Automation</div>
                         <div className="text-xs dark:text-gray-400 text-slate-500">Robot Framework, Selenium</div>
@@ -745,11 +745,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <div className="inline-block">
-              <span className="text-blue-500 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
-              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full" />
+              <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
+              <div className="mt-1 h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" />
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold dark:text-white text-slate-900 mt-4 leading-tight">
-              Let's <span className="text-blue-500">talk</span>
+              Let's <span className="text-emerald-600">talk</span>
             </h2>
             <p className="dark:text-gray-400 text-slate-500 mt-4">
               Whether it's a project, a debug session, or just geeking out about AI — my inbox is open
@@ -763,7 +763,7 @@ function App() {
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=swarupdahal17@gmail.com"
                   className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-700 to-green-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -781,15 +781,15 @@ function App() {
                     aria-label={social.name}
                     className="flex items-center gap-4 p-4 dark:bg-slate-700/30 bg-slate-100 rounded-xl dark:hover:bg-slate-700/50 hover:bg-slate-200 transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl dark:bg-slate-700 bg-slate-100 border dark:border-slate-600 border-slate-300 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/50 transition-all duration-300">
-                      <social.icon className="w-6 h-6 text-blue-500" />
+                    <div className="w-12 h-12 rounded-xl dark:bg-slate-700 bg-slate-100 border dark:border-slate-600 border-slate-300 flex items-center justify-center group-hover:bg-emerald-600/20 group-hover:border-emerald-600/50 transition-all duration-300">
+                      <social.icon className="w-6 h-6 text-emerald-600" />
                     </div>
                     <div className="flex-1">
                       <div className="text-sm dark:text-gray-400 text-slate-500">{social.name}</div>
 <div className="dark:text-white text-slate-900 
                       font-medium">@{social.name.toLowerCase()}</div>
                     </div>
-                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-blue-500 transition-colors" />
+                    <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-emerald-600 transition-colors" />
                   </a>
                 ))}
               </div>
@@ -803,7 +803,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="dark:text-gray-400 text-slate-500 text-sm">
-              Made with <span className="text-blue-500">&#9829;</span> by Swarup Dahal &mdash; Nepal
+              Made with <span className="text-emerald-600">&#9829;</span> by Swarup Dahal &mdash; Nepal
             </div>
             <div className="flex items-center gap-4">
               {socialLinks.slice(0, 3).map((social) => (
@@ -813,7 +813,7 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="dark:text-gray-400 text-slate-500 hover:text-blue-500 transition-colors duration-300"
+                  className="dark:text-gray-400 text-slate-500 hover:text-emerald-600 transition-colors duration-300"
                 >
                   <social.icon size={20} />
                 </a>
