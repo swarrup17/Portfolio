@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React, TypeScript, and Tailwind CSS.
 
-🔗 **Live:** (https://swarupdahal.netlify.app/))
+🔗 **Live:** (https://swarupdahal.netlify.app/)
 
 ## Tech Stack
 
